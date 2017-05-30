@@ -18,4 +18,7 @@
     echo 'extension=amazon-elasticache-cluster-client.so' > /etc/php/7.0/mods-available/20-elasticache.ini
     echo 'extension=amazon-elasticache-cluster-client.so' > /etc/php/7.0/cli/conf.d/20-elasticache.ini
     echo 'extension=amazon-elasticache-cluster-client.so' > /etc/php/7.0/fpm/conf.d/20-elasticache.ini
+    echo 'extension=igbinary.so' > /etc/php/7.0/mods-available/20-igbinary.ini
+    echo 'extension=igbinary.so' > /etc/php/7.0/cli/conf.d/20-igbinary.ini
+    echo 'extension=igbinary.so' > /etc/php/7.0/fpm/conf.d/20-igbinary.ini
 
