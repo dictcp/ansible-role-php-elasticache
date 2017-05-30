@@ -1,0 +1,21 @@
+---
+- name: download elasticache php extension
+  get_url:
+    url: https://elasticache-downloads.s3.amazonaws.com/ClusterClient/PHP-7.0/latest-64bit
+    dest: /tmp/AmazonElastiCacheClusterClient-PHP70-64bit.tar.gz
+- command: mkdir -p /tmp/AmazonElastiCacheClusterClient-PHP70-64bit
+- unarchive:
+    remote_src: True
+    src: https://elasticache-downloads.s3.amazonaws.com/ClusterClient/PHP-7.0/latest-64bit
+    dest: /tmp/AmazonElastiCacheClusterClient-PHP70-64bit
+- name: copy extension to php extension directory
+  copy:
+    remote_src: true
+    src: /tmp/AmazonElastiCacheClusterClient-PHP70-64bit/artifact/amazon-elasticache-cluster-client.so
+    dest: /usr/lib/php/20151012/
+- name: config php to load the extension
+  shell: |
+    echo 'extension=amazon-elasticache-cluster-client.so' > /etc/php/7.0/mods-available/20-elasticache.ini
+    echo 'extension=amazon-elasticache-cluster-client.so' > /etc/php/7.0/cli/conf.d/20-elasticache.ini
+    echo 'extension=amazon-elasticache-cluster-client.so' > /etc/php/7.0/fpm/conf.d/20-elasticache.ini
+

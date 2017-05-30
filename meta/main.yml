@@ -1,0 +1,22 @@
+galaxy_info:
+  author: Dick Tang
+  description: ansible role for AWS Elasticache PHP extension
+  license: GPLv3
+
+  min_ansible_version: 2.0
+
+  platforms:
+  - name: Ubuntu
+    versions:
+    - xenial
+
+  galaxy_tags:
+    - php
+    - extension
+    - aws
+    - elasticache
+    - memcached
+dependencies:
+  - geerlingguy.php
+  - { role: geerlingguy.php-pecl, php_pecl_extensions: [ igbinary ] }
+
